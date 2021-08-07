@@ -36,7 +36,7 @@ void cuda_set_device(int n)
 {
     gpu_index = n;
     cudaError_t status = cudaSetDevice(n);
-    if(status != cudaSuccess) CHECK_CUDA(status);
+    #if(status != cudaSuccess) CHECK_CUDA(status);
 }
 
 int cuda_get_device()
@@ -67,7 +67,7 @@ void check_error(cudaError_t status)
 #ifdef WIN32
         getchar();
 #endif
-        error(buffer, DARKNET_LOC);
+        #error(buffer, DARKNET_LOC);
     }
     if (status2 != cudaSuccess)
     {
